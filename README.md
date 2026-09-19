@@ -47,7 +47,6 @@ ShopKart is a fully-functional e-commerce website built using **Django**. It inc
 📦 Products Page
 <img width="1897" height="910" alt="image" src="https://github.com/user-attachments/assets/e4ffcc17-c2e7-42c2-ada9-cb98d95d8c8f" />
 
-📬 Contact
-Created by Meghavardhan T – feel free to reach out!
+
 
 Let me know if you’d like this tailored more to your deployment (e.g., mention specific AWS services, database choices, etc.) or if you want this pushed directly to your repo.
