@@ -1,0 +1,40 @@
+{% extends 'shop/layouts/main.html' %}
+{% load cloudinary_tags %}
+{% block title %}
+ShopKart | Online shopping
+{% endblock %}
+{% block content %}
+<section class="bg-light py-4 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <h4 class="mb-3">{{catog_name}} Products</h4>
+                    <hr style="border-color:#b8bfc2;">
+                    {% include 'shop/inc/msg.html' %}
+                </div>
+            </div>
+        </div>
+
+        <!-- This row wraps the product cards properly -->
+        <div class="row">
+            {% for item in products %}
+            <div class="col-md-4 col-lg-3">
+                <div class="card my-3 h-100">
+                    <img src="{{ item.prod_image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    <a href="{% url 'product_details' catog_name item.name %}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ item.name }}</h5>
+                            <p class="card-text">
+                                <span class="float-start old_price"><strike>Rs.{{ item.original_price }}</strike></span>
+                                <span class="float-end new_price">Rs.{{ item.selling_price }}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

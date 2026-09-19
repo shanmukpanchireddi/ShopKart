@@ -1,0 +1,67 @@
+{% extends 'shop/layouts/main.html' %}
+{% load static %}
+
+{% block title %}
+    Login | shopkart
+{% endblock %}
+
+{% block content %}
+<!-- Background Container -->
+<div class="container-fluid"
+     style="background-image: url({% static 'images/login.png' %});
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;">
+
+    <!-- Glassmorphism Login Form -->
+    <div class="col-md-5"
+         style="background: rgba(255, 255, 255, 0.8);
+                padding: 30px;
+                border-radius: 15px;
+                margin: 30px;
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);">
+
+        <h4 class="mb-3 text-center">User Login 😘</h4>
+        <hr style="background-color: #b8bfc2;">
+
+        {% include 'shop/inc/msg.html' %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username 😊</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password 🔐</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
